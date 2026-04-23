@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const products = await getCollection('products');
+  console.log('[products] entries', products.map((p) => ({
+    slug: p.slug,
+    id: p.id,
+    filePath: p.filePath,
+  })));
+  return products.flatMap((p) => {
+    const resolvedSlug =
+      p.slug ??
+      p.id ??
+      p.filePath?.split('/').pop()?.replace(/\.md$/, '');
+    if (!resolvedSlug) return [];
+    return [{ params: { slug: resolvedSlug }, props: { ...p, slug: resolvedSlug } }];
+  });
+}
+
+const { data, body, slug } = Astro.props;
+const missing = !data;
+---
+
+<BaseLayout>
+<pre>{JSON.stringify({ data, bodyLength: body?.length }, null, 2)}</pre>  {missing ? (
+    <h1>产品不存在</h1>
+  ) : (
+    <>
+      <h1>{data.title}</h1>
+      <pre>debug: slug={slug} bodyLength={body?.length ?? 0}</pre>
+      <div set:html={body} />
+    </>
+  )}
+</BaseLayout>

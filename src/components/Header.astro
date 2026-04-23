@@ -1,0 +1,10 @@
+---
+import { getHeaderHtml } from "../lib/originalHome";
+
+const headerHtml = getHeaderHtml()
+  .replaceAll("/packaging-box.html", "/packaging-box")
+  .replaceAll("https://www.ipackbynewstep.com/packaging-box.html", "/packaging-box")
+  .replaceAll("http://www.ipackbynewstep.com/packaging-box.html", "/packaging-box");
+---
+
+<Fragment set:html={headerHtml} />

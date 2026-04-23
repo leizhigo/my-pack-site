@@ -1,0 +1,12 @@
+backend: { name: github, repo: 用户名/仓库名, branch: main }
+media_folder: public/images/uploads
+collections:
+  - name: products
+    label: 产品
+    folder: src/content/products
+    create: true
+    fields:
+      - { label: 标题, name: title, widget: string }
+      - { label: 正文, name: body, widget: markdown }
+      - { label: SEO标题, name: seo_title, widget: string, required: false }
+      - { label: SEO描述, name: seo_description, widget: text, required: false }
