@@ -2,9 +2,8 @@ backend:
   name: github
   repo: leizhigo/my-pack-site
   branch: main
-
+  base_url: https://decap-cms-oauth.vercel.app
 media_folder: public/images/uploads
-
 collections:
   - name: products
     label: 产品
