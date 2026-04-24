@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: leizhigo/my-pack-site
   branch: main
 
 media_folder: public/images/uploads
