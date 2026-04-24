@@ -84,7 +84,9 @@ var _hmt = _hmt || [];
     <Header />
     <slot />
     <Footer />
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+ <!-- 这行是加载控件，你之前漏掉了！ -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<!-- 这行是初始化，你之前加了 -->
 <script>
 if (window.netlifyIdentity) {
   window.netlifyIdentity.on("init", user => {
